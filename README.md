@@ -1,30 +1,46 @@
-# 🐋 WhaleTrucker — Élite Command Center
+# 🐋 WhaleTrucker Command Center
 
-Luxury dark-mode crypto dashboard powered by CoinGecko API v3.
+> Ultimate crypto intelligence dashboard — real-time data powered by CoinGecko API
 
------
+---
 
-## Setup
+## Features
+
+- 📊 Real-time crypto prices
+- 🐋 Whale movement tracking
+- 🌾 DeFi yield monitoring
+- 💰 Portfolio valuation
+- ⚡ Live market updates
+
+---
+
+## Quick Start
 
 1. Clone this repo
-1. Copy `config.example.js` → `config.js`
-1. Open `config.js` and paste your CoinGecko API key
-1. Open `index.html` in your browser — done.
+   git clone https://github.com/yourname/whale-trucker-command-center
 
------
+2. Setup config
+   cp config.example.js config.js
+
+3. Add your API key in config.js
+   const CONFIG = {
+     COINGECKO_API_KEY: "your-key-here"
+   }
+
+4. Open index.html in browser — done.
+
+---
 
 ## Project Structure
 
-```
 whale-trucker-command-center/
-├── index.html          # Main app
-├── config.js           # API keys (local only, not on GitHub)
-├── config.example.js   # Config template
-├── .gitignore          # Ignores config.js
-└── README.md           # You are here
-```
+├── index.html            # Main app
+├── config.js             # API keys (local only, not tracked)
+├── config.example.js     # Config template
+├── .gitignore            # Ignores config.js
+└── README.md             # You are here
 
------
+---
 
 ## Stack
 
@@ -32,16 +48,13 @@ whale-trucker-command-center/
 - CoinGecko API v3
 - No framework. No BS.
 
------
+---
 
 ## Security
 
-`config.js` is listed in `.gitignore`  
+config.js is listed in .gitignore
 Never push your API key to any public repository.
 
------
+---
 
-## Data
-
-Live prices refresh every 60 seconds.  
-Falls back to demo data if API limit is hit.
+Built by scutuatua-crypto 🚀
