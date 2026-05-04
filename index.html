@@ -1,0 +1,54 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>🐋 WhaleTrucker — Élite Command</title>  
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet">  
+<style>  
+:root {  
+  --obsidian: #04060a; --onyx: #080e14; --gold: #c9a84c; --gold-light: #e8c97a;  
+  --font-display: 'Cinzel', serif; --font-mono: 'Inconsolata', monospace;  
+}  
+body { background: var(--obsidian); color: #a8b8c4; font-family: 'Cormorant Garamond', serif; margin: 0; padding: 0; min-height: 100vh; }
+header { border-bottom: 1px solid rgba(201,168,76,0.3); padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: #04060a; }
+.logo { font-family: var(--font-display); color: var(--gold); letter-spacing: 5px; font-size: 20px; font-weight: 700; }
+.btc-frame { border: 1px solid var(--gold); margin: 40px auto; max-width: 90%; padding: 40px; text-align: center; background: linear-gradient(145deg, #0d1a24, #04060a); box-shadow: 0 0 30px rgba(201,168,76,0.1); }
+.btc-price { font-family: var(--font-display); font-size: clamp(40px, 10vw, 80px); color: var(--gold-light); margin: 20px 0; text-shadow: 0 0 20px rgba(232,201,122,0.3); }
+.market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; padding: 0 40px 40px; }
+.coin-tile { background: #080e14; border: 1px solid rgba(201,168,76,0.2); padding: 25px; text-align: center; transition: 0.3s; }
+.coin-tile:hover { border-color: var(--gold); background: #0d1a24; }
+</style>
+</head>  
+<body>  
+<header>  
+  <div class="logo">WHALETRUCKER ÉLITE</div>  
+  <div id="clock" style="font-family:var(--font-mono); font-size:12px; color:var(--gold);">00:00:00</div>  
+</header>  
+<div class="btc-frame">  
+  <div style="letter-spacing:4px; font-size:10px; color:var(--gold); font-family:var(--font-mono);">BITCOIN LIVE FEED</div>  
+  <div class="btc-price" id="btcPrice">CONNECTING...</div>  
+  <div id="lastUpdate" style="font-size:10px; color:#3a5060; font-family:var(--font-mono);">SYNCHRONISING ECOSYSTEM</div>  
+</div>  
+<div class="market-grid" id="grid"></div>  
+<script>  
+async function updateData() {  
+  try {  
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,solana,binancecoin,ripple,dogecoin');  
+    const data = await res.json();  
+    document.getElementById('btcPrice').textContent = '$' + data[0].current_price.toLocaleString();  
+    document.getElementById('lastUpdate').textContent = 'LAST SYNC: ' + new Date().toLocaleTimeString();  
+    document.getElementById('grid').innerHTML = data.map(c => `  
+      <div class="coin-tile">  
+        <div style="color:var(--gold); font-family:var(--font-display); font-size:12px; letter-spacing:2px;">${c.symbol.toUpperCase()}</div>  
+        <div style="font-size:22px; color:white; margin:10px 0;">$${c.current_price.toLocaleString()}</div>  
+        <div style="font-size:11px; color:${c.price_change_percentage_24h >= 0 ? '#40a868' : '#c84050'}">${c.price_change_percentage_24h.toFixed(2)}%</div>  
+      </div>  
+    `).join('');  
+  } catch(e) { console.log("Limit"); }  
+}  
+setInterval(() => document.getElementById('clock').textContent = new Date().toLocaleTimeString(), 1000);  
+updateData(); setInterval(updateData, 60000);  
+</script>  
+</body>  
+</html>
