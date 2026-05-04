@@ -1,60 +1,58 @@
-# 🐋 WhaleTrucker Command Center
+# 🐋 WhaleTrucker — Élite Command Center
 
 > Ultimate crypto intelligence dashboard — real-time data powered by CoinGecko API
 
----
+🔗 **[Live Demo](https://whale-trucker-command-center.vercel.app/)**
 
-## Features
+-----
 
-- 📊 Real-time crypto prices
-- 🐋 Whale movement tracking
-- 🌾 DeFi yield monitoring
-- 💰 Portfolio valuation
-- ⚡ Live market updates
+## ✨ Features
 
----
+- ₿ Real-time Bitcoin & crypto prices
+- 📊 Market depth & top coins grid
+- 💰 Portfolio valuation calculator
+- 🌾 DeFi yield radar
+- ⚡ Mission control calculators (DCA, P&L, BTC converter)
+- 🔴 Live market updates every 60s
 
-## Quick Start
+-----
 
-1. Clone this repo
-   git clone https://github.com/yourname/whale-trucker-command-center
+## 🗂 Project Structure
 
-2. Setup config
-   cp config.example.js config.js
-
-3. Add your API key in config.js
-   const CONFIG = {
-     COINGECKO_API_KEY: "your-key-here"
-   }
-
-4. Open index.html in browser — done.
-
----
-
-## Project Structure
-
+```
 whale-trucker-command-center/
-├── index.html            # Main app
-├── config.js             # API keys (local only, not tracked)
-├── config.example.js     # Config template
-├── .gitignore            # Ignores config.js
-└── README.md             # You are here
+├── index.html       ← Main app (all-in-one)
+└── README.md        ← You are here
+```
 
----
+-----
 
-## Stack
+## 🛠 Stack
 
 - Vanilla HTML / CSS / JS
-- CoinGecko API v3
-- No framework. No BS.
+- CoinGecko API v3 (free tier)
+- No framework. No BS. $0 cost.
 
----
+-----
 
-## Security
+## 🔗 Related Projects
 
-config.js is listed in .gitignore
-Never push your API key to any public repository.
+|Project            |Link                                                                                                 |
+|-------------------|-----------------------------------------------------------------------------------------------------|
+|🏠 Command Hub      |[scutuatua-crypto.github.io](https://scutuatua-crypto.github.io/)                                    |
+|🌊 Solana Monitor   |[scutuatua-crypto.github.io/solana-monitor](https://scutuatua-crypto.github.io/solana-monitor/)      |
+|🌿 WhaleTrucker Reef|[scutuatua-crypto.github.io/whaletrucker-reef](https://scutuatua-crypto.github.io/whaletrucker-reef/)|
+|✈️ Telegram         |[t.me/scutua01](https://t.me/scutua01)                                                               |
 
----
+-----
 
-Built by scutuatua-crypto 🚀
+## 🛡️ Security
+
+- No API keys stored in code
+- CoinGecko free tier — no key required
+- Read-only market data only
+
+-----
+
+Built by [@scutuatua-crypto](https://github.com/scutuatua-crypto) 🚀
+**No Money · No Cry · Just Build**
