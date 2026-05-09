@@ -1,5 +1,36 @@
+name: WhaleTrucker Command CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      # Force the runner to use Node 24 as requested by GitHub
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
     - name: Set up Node.js Runtime
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
-        # Remove the 'cache: npm' line if you don't have package-lock.json
+        # Upgrading to Node 22 (LTS) or 24 to clear the deprecation warning
+        node-version: '22'
+
+    - name: Install Project Dependencies
+      # Changed from 'npm ci' to 'npm install' to handle missing lock files
+      run: npm install
+
+    - name: Execute Security & Code Linting
+      run: npm run lint --if-present
+
+    - name: Run Automated Test Suite
+      run: npm test
+      env:
+        SOLSCAN_API_KEY: ${{ secrets.SOLSCAN_API_KEY }}
