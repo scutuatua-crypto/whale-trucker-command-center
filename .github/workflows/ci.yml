@@ -6,11 +6,15 @@ on:
   pull_request:
     branches: [ main, master ]
 
+# Set the default directory for all steps
+defaults:
+  run:
+    working-directory: ./whale-trucker-command-center
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     env:
-      # Force the runner to use Node 24 as requested by GitHub
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
@@ -20,11 +24,9 @@ jobs:
     - name: Set up Node.js Runtime
       uses: actions/setup-node@v4
       with:
-        # Upgrading to Node 22 (LTS) or 24 to clear the deprecation warning
         node-version: '22'
 
     - name: Install Project Dependencies
-      # Changed from 'npm ci' to 'npm install' to handle missing lock files
       run: npm install
 
     - name: Execute Security & Code Linting
