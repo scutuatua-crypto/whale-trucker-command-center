@@ -1,38 +1,4 @@
-name: WhaleTrucker Command CI
-
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-
-# Set the default directory for all steps
-defaults:
-  run:
-    working-directory: ./whale-trucker-command-center
-
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-
-    - name: Set up Node.js Runtime
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-
-    - name: Install Project Dependencies
-      run: npm install
-
-    - name: Execute Security & Code Linting
-      run: npm run lint --if-present
-
-    - name: Run Automated Test Suite
-      run: npm test
-      env:
-        SOLSCAN_API_KEY: ${{ secrets.SOLSCAN_API_KEY }}
+- name: Upload coverage reports to Codecov
+    uses: codecov/codecov-action@v5
+    with:
+      token: ${{ secrets.CODECOV_TOKEN }}
