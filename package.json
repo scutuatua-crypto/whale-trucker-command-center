@@ -4,8 +4,7 @@
   "description": "WhaleTrucker — Élite Command Center",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "jest --coverage",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -14,5 +13,8 @@
   "devDependencies": {
     "jest": "^29.0.0",
     "eslint": "^8.0.0"
+  },
+  "jest": {
+    "coverageReporters": ["lcov", "text"]
   }
 }
